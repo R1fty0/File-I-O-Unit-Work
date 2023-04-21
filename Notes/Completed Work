@@ -1,0 +1,38 @@
+General Changes:
+- Combined these two methods into one: create_copy_of_file_based_on_alphabetic_order + create_copy_of_file_based_on_word_length = create_copy_of_file_based_on_parameter
+
+- Changed the name: encryptString() -> encodeString
+
+- Changed the constructor in the File Encrypter and File Decrypter classes to the following:
+    def __init__(self):
+        from reader import FileRead
+        from writer import FileWrite
+        from basics import Basics
+        self.basics = Basics()
+        self.reader = FileRead()
+        self.writer = FileWrite()
+
+- Rewrote the program structure: Application -> Basics -> ModuleManager -> ALl other classes
+
+
+"""
+    Problems
+"""
+
+- Completed all To-Do methods:
+
+Tier 1:
+
+- Wrap back around if the int the char is cast to goes above 126 or below 32  * May be incomplete
+
+- Create another method called encodeData that accepts a list of Strings, encodes all of them, and returns a list of the encoded content
+
+- Create an encodeToFile method that allows data sent to it to be encoded as well as written to a custom file  * Has a bug
+
+Tier 2:
+
+- A method that can decrypt a String using a given cypher/shift and then return the String
+
+Tier 3:
+
+

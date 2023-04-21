@@ -1,0 +1,43 @@
+Tier 1:
+- All DONE!
+
+Tier 2:
+
+Create content in the FileDecrypter class, such as …
+
+- A method that decrypt the content for a list of Strings using a given cypher/shift and then return the decrypted list of Strings
+
+- Create a decodeFromFile method that reads data from a file, decodes it, and then writes the decoded information to a new file (hint: you already have all the tools built to do this, you just need to link them together in the right way!)
+
+Tier 3:
+
+- Create a randomizedEncrypter method in the FileEncrypter class, which randomly generates a cypher/shift key that it applies to a given file, creating a new file that is a copy of the original except its data is now encrypted
+
+- Create a bruteForceDecryption method in the FileDecrypter class, which should do the following:
+
+1. Accept an encrypted file
+
+2. Attempt to decrypt the file using a variety of cyphers/shifts
+
+3. Print out each attempt (or a small portion of the content from an attempt, if there is a lot of data) to the user
+
+4. Allow the user to choose if a successful decryption was found in the data. If they choose yes, end the algorithm. If they choose no, run it again with a different set of guesses
+
+Extension Problems
+
+Update your bruteForceDecryption algorithm to …
+
+- Make its own intelligent guesses about whether or not a decryption was successful.
+
+- Hints: I’ve given you some tips on this already in the video lessons! You will need to check the contents of the decrypted message against the “AllWords” dictionary file and have your algorithm make a determination as to whether the contents appear decrypted properly or not!
+
+- Create layeredEncrytion and layeredDecryption algorithms that Apply different types of encryption/decryption in a row. For example, shift all letters by 3 then shift every other letter by 2 then reverse the order of all letters
+
+
+Other bugs:
+1.     def decrypt_string(self, encrypted_string, cypher) -> str:
+        """ Decrypts a string using a given cypher/shift and then returns the encrypted data."""
+        # Need to remove space symbols...
+        decrypted_string = ''
+
+2. Exception Handling for All Methods

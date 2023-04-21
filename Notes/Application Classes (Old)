@@ -1,0 +1,81 @@
+class Application:
+    def __init__(self):
+        self.basics = Basics()
+        self.username = self.basics.set_username()
+        self.password = self.basics.set_password()
+
+
+# Add a method called : open_file_and_apply_operation - MAYBE...
+class Basics:
+    def __init__(self):
+        """ Class that contains methods used throughout all aspects of the program. """
+        self.mod_manger = ModuleManager(self)
+
+    def set_username(self) -> str:
+        """ Asks the user for and sets their name."""
+        username = input("What is your name: ")
+        if self.is_given_data_type(username, str):
+            print(f"Hi {username}")
+            return username
+        else:
+            print("You entered an invalid username. Please try again.")
+            self.set_username()
+
+    def set_password(self) -> str:
+        """ Sets the user's password. """
+        password = str(input("Please enter the password you would like to use:"))
+        confirmed_password = str(input("Please re-enter your password: "))
+        try:
+            if password == confirmed_password:
+                print("Congratulations, your password has been set.")
+                return password
+            else:
+                print("Your passwords do not match, please try again.")
+                self.set_password()
+        except TypeError:
+            print("Either one of your passwords are of a type not supported. Please try again.")
+            self.set_password()
+
+    def verify_user_password(self, password:str , user_input) -> bool:
+        """ Checks if the user entered the correct password. """
+        try:
+            if password.upper() == user_input.upper():
+                return True
+            else:
+                return False
+        except TypeError:
+            print("You have not inputted a valid password. Please try again!")
+
+    def is_given_data_type(self, data, requested_data_type: type) -> bool:
+        """ Checks if the data given is of the requested data type"""
+        if isinstance(data, requested_data_type):
+            return True
+        else:
+            return False
+
+    def get_char_unicode_val(self, character):
+        """ Returns the Unicode code point for the given character in the ASCII encoding. """
+        return ord(character)
+
+    def convert_back_to_char(self, number):
+        """ Converts ACSII encoding back to a character"""
+        return chr(number)
+
+class ModuleManager:
+    def __init__(self, file_basics):
+        """ Manages each module. """
+        # import modules
+        from FileReader import FileRead
+        from FileWriter import FileWrite
+        from Encrypter import FileEncrypter
+        from Decrypter import FileDecrypter
+
+        # Name space of the instantiated Basics module -> passed down to each module
+        self.basics = file_basics
+
+        # instantiate modules
+        self.reader = FileRead()
+        self.writer = FileWrite(self.basics)
+
+        self.encoder = FileEncrypter(self.basics, self.reader, self.writer)
+        self.decoder = FileDecrypter(self.basics, self.reader, self.writer)

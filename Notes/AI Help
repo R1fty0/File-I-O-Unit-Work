@@ -1,0 +1,14 @@
+Debugging for these:
+- get_total_characters()
+- is_keyword_present()
+- create_copy_of_file_based_on_word_length() -> now is apart of create_copy_of_file_based_on_parameter()
+- get_words_of_certain_length
+
+An example to base my off of:
+- create_copy_of_file_based_on_word_length()
+
+An explanation for what this means: Wrap back around if the int the char is cast to goes above 126 or below 32
+
+Reminded me how dictionaries in Python are not the same in C#:
+ for key, value in self.menu.items():
+            print(str(key) + ": " + value)
